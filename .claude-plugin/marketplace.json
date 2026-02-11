@@ -5,7 +5,7 @@
   "description": "Marketplace for prompt-dev plugin - Fast component scaffolding toolkit for Claude Code plugin development",
   "owner": {
     "name": "Jason",
-    "email": "jason@example.com"
+    "email": "polyklietoscanon@gmail.com"
   },
   "plugins": [
     {
@@ -14,7 +14,7 @@
       "version": "0.1.0",
       "author": {
         "name": "Jason",
-        "email": "jason@example.com"
+        "email": "polyklietoscanon@gmail.com"
       },
       "source": "./",
       "category": "developer-tools",

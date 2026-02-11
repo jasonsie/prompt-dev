@@ -23,6 +23,7 @@ reference/
 │   ├── skills/         # 7 skills covering all aspects of plugin development
 │   ├── agents/         # 3 specialized agents (agent-creator, plugin-validator, skill-reviewer)
 │   ├── commands/       # create-plugin workflow command
+│   ├── templates/      # Templates for plugin.json and marketplace.json
 │   └── README.md       # Full plugin-dev documentation
 │
 └── hookfy/             # Plugin for creating hooks from conversation analysis
@@ -51,13 +52,15 @@ Claude Code plugins follow standardized structures:
 
 ```
 plugin-name/
-├── .claude-plugin/plugin.json    # REQUIRED: Manifest at this location
-├── commands/                      # Slash commands (.md files)
-├── agents/                        # Subagents (.md files with frontmatter)
+├── .claude-plugin/
+│   ├── plugin.json         # REQUIRED: Plugin manifest
+│   └── marketplace.json    # RECOMMENDED: Marketplace configuration for distribution
+├── commands/               # Slash commands (.md files)
+├── agents/                 # Subagents (.md files with frontmatter)
 ├── skills/[skill-name]/SKILL.md  # Skills (subdirectories with SKILL.md)
-├── hooks/hooks.json              # Event handlers
-├── .mcp.json                     # MCP server definitions
-└── scripts/                      # Utilities and helpers
+├── hooks/hooks.json        # Event handlers
+├── .mcp.json              # MCP server definitions
+└── scripts/               # Utilities and helpers
 ```
 
 **Critical**: Directories like `commands/`, `agents/`, `skills/` are at plugin root, NOT inside `.claude-plugin/`.
