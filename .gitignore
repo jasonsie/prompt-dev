@@ -28,6 +28,3 @@ __pycache__/
 *.tmp
 *.temp
 *.log
-
-# reference
-/reference/*

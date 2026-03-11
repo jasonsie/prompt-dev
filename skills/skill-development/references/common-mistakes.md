@@ -284,7 +284,7 @@ skill-name/
 2. Check structure (frontmatter, files exist)
 3. Validate trigger phrases
 4. Test with real queries
-5. Use skill-reviewer agent
+5. Use skill-creator agent (self-reviews)
 6. Fix issues before committing
 ```
 
@@ -298,7 +298,7 @@ skill-name/
 
 1. Create validation checklist
 2. Test trigger phrases manually
-3. Use skill-reviewer agent
+3. Use skill-creator agent (self-reviews)
 4. Verify all referenced files exist
 5. Test in real Claude Code session
 
@@ -455,5 +455,5 @@ Before finalizing any skill, check:
 
 For more on skill development best practices:
 - Study the skills in `../../` (hook-development, agent-development, etc.)
-- Use the skill-reviewer agent for automated validation
+- Use the skill-creator agent (self-reviews) for automated validation
 - Refer to `progressive-disclosure-guide.md` for organization guidance

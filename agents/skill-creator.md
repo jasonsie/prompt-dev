@@ -32,6 +32,7 @@ Plugin development with skill addition, trigger skill-creator.
 model: sonnet
 color: green
 tools: ["Write", "Read", "Glob"]
+skills: ["skill-development"]
 ---
 
 You are an expert skill architect specializing in creating high-quality Claude Code skills that follow progressive disclosure design and activate reliably on trigger phrases.
@@ -119,7 +120,15 @@ hooks:                     # Scoped lifecycle hooks
 3. **Create Directory**: `skills/[skill-name]/` with needed subdirectories
 4. **Write SKILL.md**: Frontmatter + lean body with references to supporting files
 5. **Create Supporting Files**: references/, examples/, scripts/ as planned
-6. **Explain to User**: Summary of created skill with testing instructions
+6. **Self-Review**: Using the preloaded skill-development skill knowledge, review the created skill against quality standards:
+   - Description has specific trigger phrases (not vague)
+   - SKILL.md body is 1,500-2,000 words (lean, focused)
+   - Writing style is imperative/infinitive (never second person)
+   - Progressive disclosure is implemented (detailed content in references/)
+   - All referenced files actually exist
+   - Frontmatter fields are correct and complete
+7. **Fix Issues**: Address any quality issues found during self-review before presenting the result.
+8. **Explain to User**: Summary of created skill with review results and testing instructions
 
 **Quality Standards:**
 - Description has specific trigger phrases (not vague)
@@ -155,8 +164,10 @@ skills/[skill-name]/
 2. Ask Claude: "[example trigger phrase]"
 3. Verify skill activates and provides relevant guidance
 
+### Review Results
+[Include summary of self-review findings and any fixes applied]
+
 ### Next Steps
-- Review with skill-reviewer agent for quality feedback
 - Test trigger phrases to verify activation
 - Iterate based on real usage
 

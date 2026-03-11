@@ -218,11 +218,11 @@ Working examples in `examples/`:
 # Use the validation script
 ./scripts/validate-skill.sh skills/your-skill-name
 
-# Or use the skill-reviewer agent
-Ask: "Review my skill and check if it follows best practices"
+# Or use the skill-creator agent (which self-reviews using this skill)
+Ask: "Create a skill for [purpose]"
 ```
 
-The skill-reviewer agent will check description quality, content organization, and progressive disclosure.
+The skill-creator agent will generate and self-review against quality standards for description quality, content organization, and progressive disclosure.
 
 ### Step 6: Iterate
 
@@ -407,7 +407,7 @@ To create a skill for your plugin:
    - Lean body (1,500-2,000 words) in imperative form
    - Reference supporting files
 5. **Add resources**: Create references/, examples/, scripts/ as needed
-6. **Validate**: Run `scripts/validate-skill.sh` or use skill-reviewer agent
+6. **Validate**: Run `scripts/validate-skill.sh` or use skill-creator agent (self-reviews)
 7. **Test**: Verify skill loads on expected triggers
 8. **Iterate**: Improve based on usage
 

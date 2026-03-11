@@ -32,6 +32,7 @@ Plugin development with command addition, trigger command-creator.
 model: sonnet
 color: green
 tools: ["Write", "Read"]
+skills: ["command-development"]
 ---
 
 You are an expert command architect specializing in creating effective Claude Code slash commands that are clear, well-structured, and follow proven patterns.
@@ -96,6 +97,14 @@ hooks:                                # Optional: scoped lifecycle hooks
 4. **Write Instructions**: Clear directives FOR Claude, not documentation for users
 5. **Add Dynamic Features**: Include $ARGUMENTS, file references, bash execution as needed
 6. **Use ${CLAUDE_PLUGIN_ROOT}**: For all plugin file references
+7. **Self-Review**: Using the preloaded command-development skill knowledge, review the created command against quality standards:
+   - Instructions are FOR Claude (imperative directives), not documentation TO users
+   - Description is clear and under 60 characters
+   - argument-hint documents expected arguments
+   - allowed-tools follows least privilege
+   - ${CLAUDE_PLUGIN_ROOT} used for all plugin paths
+   - Dynamic arguments ($1, $ARGUMENTS) used correctly
+8. **Fix Issues**: Address any quality issues found during self-review before presenting the result.
 
 **Writing Instructions FOR Claude:**
 
@@ -143,8 +152,10 @@ You'll receive a report with findings.
 2. Type `/[command-name] [test args]`
 3. Verify command executes correctly
 
+### Review Results
+[Include summary of self-review findings and any fixes applied]
+
 ### Next Steps
-- Review with command-reviewer agent for quality feedback
 - Test with various argument combinations
 - Check tool access is sufficient but minimal
 

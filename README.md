@@ -1,28 +1,17 @@
 # Prompt-Dev Plugin
 
-Fast component scaffolding toolkit for Claude Code plugin development. Create agents, skills, commands, hooks, and complete plugins with guided workflows, automated validation, and quality review.
+Fast component scaffolding toolkit for Claude Code plugin development. Create agents, skills, commands, hooks, and complete plugins with specialized creator agents, automated validation, and quality review.
 
 ## Overview
 
 **Prompt-Dev** accelerates Claude Code component development by providing:
 
-- **Guided Creation Workflows**: Step-by-step commands that walk you through creating each component type
 - **Specialized Creator Agents**: AI-powered generators that craft high-quality components from descriptions
-- **Quality Review System**: Automated reviewers that validate structure, quality, and best practices
+- **Built-in Quality Review**: Creator agents self-review using preloaded development skills
 - **Comprehensive Skills**: Reference documentation for all aspects of plugin development
 - **Validation Tools**: Ensure components meet Claude Code standards before deployment
 
 ## Features
-
-### 🚀 Fast Scaffolding Commands
-
-Create components with or without arguments:
-
-- `/create-agent [description]` - Generate agent configurations with AI assistance
-- `/create-skill [description]` - Build skills with progressive disclosure design
-- `/create-command [description]` - Scaffold slash commands with proper structure
-- `/create-hook [description]` - Create event hooks with validation
-- `/create-plugin [description]` - Scaffold complete plugin structures (full 8-phase workflow)
 
 ### 🤖 Specialized Creator Agents
 
@@ -33,14 +22,14 @@ AI-powered generators that build components from natural language descriptions:
 - **command-creator** - Builds commands with proper frontmatter and structure
 - **hook-creator** - Designs event hooks with appropriate matchers
 
-### ✅ Quality Review System
+### ✅ Built-in Quality Review
 
-Automated reviewers that validate and improve your components:
+Creator agents preload development skills to self-review against quality standards:
 
-- **agent-reviewer** - Validates agent descriptions, examples, and system prompts
-- **skill-reviewer** - Checks progressive disclosure, trigger phrases, writing style
-- **command-reviewer** - Reviews command structure, tools, and documentation
-- **hook-reviewer** - Validates hook configuration and implementation
+- **agent-creator** - Self-reviews using agent-development skill
+- **skill-creator** - Self-reviews using skill-development skill
+- **command-creator** - Self-reviews using command-development skill
+- **hook-creator** - Self-reviews using hook-development skill
 - **plugin-validator** - Comprehensive plugin structure and quality validation
 
 ### 📚 Reference Skills
@@ -75,51 +64,39 @@ cp -r prompt-dev ~/.claude/plugins/
 
 ### Create an Agent
 
-```bash
-# Interactive workflow
-/create-agent
-
-# With description
-/create-agent "reviews code for security vulnerabilities"
+```
+"Create an agent that reviews code for security vulnerabilities"
 ```
 
-The command will:
+The agent-creator will:
 1. Understand your requirements
 2. Design agent configuration (model, tools, color)
-3. Use agent-creator to generate the file
+3. Generate the agent file
 4. Validate structure
-5. Review quality with agent-reviewer
+5. Self-review against agent-development standards
 6. Offer to iterate on feedback
 
 ### Create a Skill
 
-```bash
-# Interactive workflow
-/create-skill
-
-# With description
-/create-skill "API testing patterns and best practices"
+```
+"Create a skill for API testing patterns and best practices"
 ```
 
-The command will:
+The skill-creator will:
 1. Clarify domain knowledge and usage scenarios
 2. Plan resources (references/, examples/, scripts/)
 3. Design trigger description
-4. Use skill-creator to generate files
-5. Validate and review with skill-reviewer
+4. Generate the skill files
+5. Self-review against skill-development standards
 6. Iterate based on feedback
 
 ### Create a Complete Plugin
 
-```bash
-# Full guided workflow
-/create-plugin
-
-# With description
-/create-plugin "database migration management"
+```
+"Create a plugin for database migration management"
 ```
 
-Runs comprehensive 8-phase process:
+The plugin-validator helps verify:
 1. Discovery - Understand requirements
 2. Component Planning - Determine needed components
 3. Detailed Design - Resolve ambiguities
@@ -131,33 +108,15 @@ Runs comprehensive 8-phase process:
 
 ## Component Overview
 
-### Commands (5)
-
-Located in `commands/`:
-
-| Command | Purpose |
-|---------|---------|
-| `create-agent.md` | 6-phase guided agent creation workflow |
-| `create-skill.md` | 7-phase guided skill creation workflow |
-| `create-command.md` | Command scaffolding with frontmatter |
-| `create-hook.md` | Event hook creation and configuration |
-| `create-plugin.md` | Complete plugin scaffolding (8 phases) |
-
-### Agents (9)
+### Agents (5)
 
 Located in `agents/`:
 
-**Creator Agents:**
-- `agent-creator.md` - AI-powered agent generation
-- `skill-creator.md` - Progressive disclosure skill building
-- `command-creator.md` - Command file generation
-- `hook-creator.md` - Hook configuration design
-
-**Reviewer Agents:**
-- `agent-reviewer.md` - Agent quality validation
-- `skill-reviewer.md` - Skill structure and style review
-- `command-reviewer.md` - Command validation
-- `hook-reviewer.md` - Hook configuration review
+**Creator Agents** (with skill-based self-review):
+- `agent-creator.md` - AI-powered agent generation (preloads agent-development)
+- `skill-creator.md` - Progressive disclosure skill building (preloads skill-development)
+- `command-creator.md` - Command file generation (preloads command-development)
+- `hook-creator.md` - Hook configuration design (preloads hook-development)
 
 **Validator:**
 - `plugin-validator.md` - Comprehensive plugin validation
@@ -181,9 +140,7 @@ Located in `skills/`:
 ### Example 1: Create a Code Review Agent
 
 ```
-You: /create-agent
-Claude: What should this agent do?
-You: Review pull requests for code quality, security issues, and best practices
+You: Create an agent that reviews pull requests for code quality, security issues, and best practices
 Claude: Should it trigger proactively after PR creation, or on request?
 You: On request, when I ask it to review code
 Claude: [Creates agent using agent-creator, validates, reviews, presents feedback]
@@ -192,7 +149,7 @@ Claude: [Creates agent using agent-creator, validates, reviews, presents feedbac
 ### Example 2: Create API Testing Skill
 
 ```
-You: /create-skill API testing patterns
+You: Create a skill for API testing patterns
 Claude: What specific scenarios would use this skill?
 You: When testing REST APIs, writing integration tests, mocking external services
 Claude: [Plans resources, creates SKILL.md with references/, reviews quality]
@@ -201,10 +158,10 @@ Claude: [Plans resources, creates SKILL.md with references/, reviews quality]
 ### Example 3: Create Complete Database Plugin
 
 ```
-You: /create-plugin database migration management
+You: Create a plugin for database migration management
 Claude: [8-phase workflow]
   Phase 1: Understands migration use case
-  Phase 2: Plans components (commands, skills, MCP)
+  Phase 2: Plans components (agents, skills, MCP)
   Phase 3: Asks clarifying questions about DB types, formats
   Phase 4: Creates plugin structure
   Phase 5: Implements all components using creator agents
@@ -226,10 +183,8 @@ Skills follow three-tier information architecture:
 ### Component-Based Design
 
 Each component type has:
-- **Creator** agent for generation
-- **Reviewer** agent for validation
-- **Reference skill** for guidance
-- **Guided command** for interactive workflows
+- **Creator agent** for generation (preloads development skill for self-review)
+- **Reference skill** for domain knowledge and quality standards
 
 ### Quality Assurance
 
@@ -243,11 +198,10 @@ Multi-layer validation ensures quality:
 
 ### When Creating Components
 
-1. **Start with commands** - Use guided workflows for interactive creation
-2. **Leverage creator agents** - Let AI generate boilerplate and structure
-3. **Review thoroughly** - Always run reviewers before finalizing
+1. **Leverage creator agents** - Let AI generate boilerplate and structure
+3. **Review thoroughly** - Creator agents self-review; use plugin-validator for final checks
 4. **Test immediately** - Verify components work in Claude Code
-5. **Iterate based on feedback** - Use reviewer suggestions to improve quality
+5. **Iterate based on feedback** - Use review findings to improve quality
 
 ### Naming Conventions
 
@@ -263,7 +217,6 @@ your-plugin/
 ├── .claude-plugin/
 │   └── plugin.json          # Required manifest
 ├── agents/                  # Specialized agents
-├── commands/                # Slash commands
 ├── skills/                  # Knowledge modules
 │   └── skill-name/
 │       ├── SKILL.md        # Core content
@@ -283,13 +236,13 @@ your-plugin/
    - Decide what you're building (agent, skill, command, etc.)
    - Gather requirements and examples
 
-2. **Run the creation command**
-   - Use `/create-agent`, `/create-skill`, etc.
-   - Answer guided questions
+2. **Trigger a creator agent**
+   - Describe what you need ("Create an agent that...")
+   - Answer clarifying questions
    - Let creator agents generate files
 
 3. **Review and validate**
-   - Automatic review by specialized reviewers
+   - Creator agents self-review using development skills
    - Address critical issues
    - Iterate on suggestions
 
@@ -299,7 +252,7 @@ your-plugin/
    - Test edge cases
 
 5. **Iterate and improve**
-   - Use reviewer feedback
+   - Use review findings
    - Add examples and documentation
    - Refine based on usage
 
@@ -307,12 +260,9 @@ your-plugin/
 
 ### Built-in Validators
 
-Each component type has a specialized reviewer:
-- Agent files → `agent-reviewer` agent
-- Skills → `skill-reviewer` agent
-- Commands → `command-reviewer` agent
-- Hooks → `hook-reviewer` agent
+Creator agents perform self-review using preloaded development skills. For comprehensive validation:
 - Complete plugins → `plugin-validator` agent
+- Individual components → Creator agents self-review during creation
 
 ### Running Validation
 
@@ -322,11 +272,9 @@ Validation happens automatically in creation workflows, or run manually:
 # Validate a complete plugin
 "Use the plugin-validator agent to check my plugin"
 
-# Review a specific skill
-"Use the skill-reviewer agent to review the api-testing skill"
-
-# Validate an agent
-"Use the agent-reviewer agent to check the code-reviewer agent"
+# Create and auto-review a component
+"Create an agent that reviews code quality"
+# (agent-creator will self-review using agent-development skill)
 ```
 
 ## Troubleshooting
@@ -337,7 +285,7 @@ Validation happens automatically in creation workflows, or run manually:
 
 **Solutions**:
 1. Verify `.claude-plugin/plugin.json` exists
-2. Check files are in correct directories (commands/, agents/, skills/)
+2. Check files are in correct directories (`agents/`, `skills/`)
 3. Restart Claude Code session
 4. Run plugin-validator to check structure
 
@@ -349,7 +297,7 @@ Validation happens automatically in creation workflows, or run manually:
 1. Check description has specific trigger phrases
 2. Use exact phrases from description when asking questions
 3. Verify SKILL.md exists in `skills/[name]/SKILL.md`
-4. Review with skill-reviewer for trigger phrase quality
+4. Re-create using skill-creator (which self-reviews trigger phrases)
 
 ### Agents Not Triggering
 
@@ -359,7 +307,7 @@ Validation happens automatically in creation workflows, or run manually:
 1. Check description has 2-4 `<example>` blocks
 2. Verify examples show diverse triggering scenarios
 3. Use phrases similar to examples in user messages
-4. Review with agent-reviewer for description quality
+4. Re-create using agent-creator (which self-reviews description quality)
 
 ### Path Resolution Errors
 
@@ -376,8 +324,8 @@ Validation happens automatically in creation workflows, or run manually:
 When extending this plugin:
 
 1. **Follow existing patterns** - Study current components as reference
-2. **Use the creation commands** - Dog-food the plugin by using it to extend itself
-3. **Validate rigorously** - Run all reviewers before adding components
+2. **Use creator agents** - Dog-food the plugin by using it to extend itself
+3. **Validate rigorously** - Use plugin-validator before publishing
 4. **Document thoroughly** - Update README and component docs
 5. **Test comprehensively** - Verify new components work in Claude Code
 
